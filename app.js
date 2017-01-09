@@ -1,9 +1,10 @@
-var fs = require('fs');
-var express = require('express');
-var http = require('http');
+var app = require('express').createServer();
+
+app.get('/', function(req, res) {
+  res.send("Hello World");
+});
 
 
-http.createServer((req, res) => {
-  res.writeHead(200);
-  res.end('hello world\n');
-}).listen(8000);
+app.listen(process.env.PORT || 3000, function() {
+  console.log("listening on 3000");
+});
