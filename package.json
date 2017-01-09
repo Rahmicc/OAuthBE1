@@ -1,0 +1,25 @@
+{
+  "name": "oauthbe1",
+  "version": "1.0.0",
+  "description": "OAuth backendserver",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "fs": "^0.0.1-security",
+    "https": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rahmicc/OAuthBE1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rahmicc/OAuthBE1/issues"
+  },
+  "homepage": "https://github.com/Rahmicc/OAuthBE1#readme"
+}
