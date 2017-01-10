@@ -2,6 +2,7 @@ var express = require('express'),
 querystring = require('querystring'),
 https = require('https'),
 app = express(),
+urlparse = require('url-parse'),
 port = process.env.PORT || 3000;
 data = querystring.stringify({code:'4/P7q7W91a-oMsCeLvIaQm6bTrgtp7',
 	client_id:'920263213693-i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
@@ -26,9 +27,16 @@ options = {
 
 
 app.get('/callback', function (req, res) {
-  console.log('Google did sent a response');
 
+  console.log('Google did sent a response');
+  var parsedCallbackReq = url-parse(req);
+  console.log(parsedCallbackReq.query);
+
+  var qsFromReq = querystring.parse(parsedCallbackReq.query);
+  console.log(qsFromReq.code);
+  
   console.log('sending new POST request...');
+
 
   var postReq= https.request(options, function(res){
   	var result = '';
