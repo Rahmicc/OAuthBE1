@@ -5,13 +5,6 @@ https = require('https'),
 app = express(),
 urlparse = require('url-parse'),
 port = process.env.PORT || 3000,
-data = querystring.stringify({code:'4/P7q7W91a-oMsCeLvIaQm6bTrgtp7',
-	client_id:'920263213693-i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
-	client_secret:'eRoYBXEU6TlG1xc9EWtuaf9y',
-	redirect_uri:'https://peaceful-waters-40664.herokuapp.com/callback',
-	grant_type:'authorization_code'
-    }),
-
 options = {
   hostname: 'www.googleapis.com',
   port: 443,
@@ -39,7 +32,14 @@ app.get('/callback', function (req, res) {
 
 
   var postReq= https.request(options, function(res){
-	data.code = qsFromReq.code;
+	
+	var data = querystring.stringify({code:qsFromReq.code,
+		client_id:'920263213693-i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
+		client_secret:'eRoYBXEU6TlG1xc9EWtuaf9y',
+		redirect_uri:'https://peaceful-waters-40664.herokuapp.com/callback',
+		grant_type:'authorization_code'
+	    }),
+
 	console.log ('sending...'+data);
   	var result = '';
 	res.on('data', function (chunk) {
