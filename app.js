@@ -11,7 +11,7 @@ port = process.env.PORT || 3000;
 app.get('/callback', function (req, res) {
 
   console.log('Google did sent a response:' + req.url);
-  console.log(query);
+  console.log('query');
   var queryString  = url.parse(req.url, true).query;
   console.log(queryString);
   
