@@ -15,10 +15,9 @@ app.get('/callback', function (req, res) {
   var queryString  = url.parse(req.url, true).query;
   console.log(queryString);
   
-  var qsFromReq = querystring.parse(queryString);
-  console.log('qsFromReq');
-  console.log(qsFormReq);
- 
+  var responseCode=queryString.code;
+  console.log(code);
+  console.log(queryString);
   var data = querystring.stringify({code:qsFromReq.code,
 		client_id:'920263213693-i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
 		client_secret:'eRoYBXEU6TlG1xc9EWtuaf9y',
