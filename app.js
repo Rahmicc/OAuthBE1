@@ -1,10 +1,3 @@
-var express = require("express"),
-app = express(),
-port = process.env.PORT || 1881,
-https = require("https"),
-querystring = require('querystring');
- 
-// form data
 var postData = querystring.stringify({
   firstanme: "Amy",
   lastname: "Li"
@@ -20,10 +13,10 @@ options = {
   },
   
   form: {'code':'4/P7q7W91a-oMsCeLvIaQm6bTrgtp7',
-		'client_id':'920263213693-i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
+'client_id':'920263213693-i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
 		'client_secret':'eRoYBXEU6TlG1xc9EWtuaf9y',
-		redirect_uri='https://peaceful-waters-40664.herokuapp.com/callback'&
-		grant_type=authorization_code}
+		redirect_uri:'https://peaceful-waters-40664.herokuapp.com/callback',
+		grant_type:'authorization_code'}
 };
 
 
