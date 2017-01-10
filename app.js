@@ -31,7 +31,7 @@ options = {
 app.get('/callback', function (req, res) {
   console.log('Google did sent a response');
   console.log (req);
-  console.log('sending POST request...');
+  console.log('sending POST request with params...');
 
   var postReq= https.request(options, function(res){
   	var result = '';
