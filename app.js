@@ -1,7 +1,14 @@
 var express = require('express'),
+querystring = require('querystring'),
 https = require('https'),
 app = express(),
 port = process.env.PORT || 3000;
+data = querystring.stringify({code:'4/P7q7W91a-oMsCeLvIaQm6bTrgtp7',
+	client_id:'920263213693-	i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
+	client_secret:'eRoYBXEU6TlG1xc9EWtuaf9y',
+	redirect_uri:'https://peaceful-waters-40664.herokuapp.com/callback',
+	grant_type:'authorization_code'
+    });
 
 options = {
   hostname: 'www.googleapis.com',
@@ -9,14 +16,11 @@ options = {
   path: '/oauth2/v4/token',
   method: 'POST',
   headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
+      	'Content-Type': 'application/x-www-form-urlencoded',
+	'Content-Length': Buffer.byteLength(data)
   },
   
-  form: {'code':'4/P7q7W91a-oMsCeLvIaQm6bTrgtp7',
-		'client_id':'920263213693-i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
-		'client_secret':'eRoYBXEU6TlG1xc9EWtuaf9y',
-		'redirect_uri':'https://peaceful-waters-40664.herokuapp.com/callback',
-		'grant_type':'authorization_code'}
+
 };
 
 
@@ -45,7 +49,7 @@ app.get('/callback', function (req, res) {
    });
  
   //send request witht the postData form
-  postReq.write();
+  postReq.write(data);
   postReq.end();
   res.send('Hello World!')
 });
