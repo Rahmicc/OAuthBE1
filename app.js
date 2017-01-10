@@ -12,7 +12,7 @@ app.get('/callback', function (req, res) {
 
   console.log('Google did sent a response');
   var qsFromReq = querystring.parse(urlparse(req.url));
-
+  console.log(qsFromreq);
   var data = querystring.stringify({code:qsFromReq.code,
 		client_id:'920263213693-i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
 		client_secret:'eRoYBXEU6TlG1xc9EWtuaf9y',
