@@ -3,7 +3,7 @@ var express = require('express'),
 querystring = require('querystring'),
 https = require('https'),
 app = express(),
-urlparse = require('url-parse'),
+url= require('url'),
 //jwt = require('jsonwebtoken'),
 port = process.env.PORT || 3000;
 
@@ -12,8 +12,8 @@ app.get('/callback', function (req, res) {
 
   console.log('Google did sent a response:' + req.url);
   console.log();
-  console.log(urlparse(req.url));
-  var qsFromReq = querystring.parse(urlparse(req.url));
+  console.log(url.parse(req.url, true));
+  var qsFromReq = querystring.parse(url.parse(req.url, true).query);
   console.log('qsFromReq');
   console.log(qsFormReq);
  

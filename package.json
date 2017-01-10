@@ -9,6 +9,7 @@
     "https": "^1.0.0",
     "jsonwebtoken": "^7.2.1",
     "querystring": "^0.2.0",
+    "url": "^0.11.0",
     "url-parse": "^1.1.7",
     "url-parser": "0.0.1"
   },
