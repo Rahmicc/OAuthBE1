@@ -4,20 +4,14 @@ querystring = require('querystring'),
 https = require('https'),
 app = express(),
 urlparse = require('url-parse'),
+jwt = require('jsonwebtoken'),
 port = process.env.PORT || 3000;
-
 
 
 app.get('/callback', function (req, res) {
 
   console.log('Google did sent a response');
-  var parsedCallbackReq = urlparse(req.url);
-  console.log(parsedCallbackReq.query);
-
-  var qsFromReq = querystring.parse(parsedCallbackReq.query);
-  console.log(qsFromReq.code);
-  
-  console.log('sending new POST request...');
+  var qsFromReq = querystring.parse(urlparse(req.url));
 
   var data = querystring.stringify({code:qsFromReq.code,
 		client_id:'920263213693-i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
@@ -36,6 +30,7 @@ app.get('/callback', function (req, res) {
 		'Content-Length': Buffer.byteLength(data)
 	}
    };
+
   var postReq= https.request(options, function(res){
 	
 
@@ -47,6 +42,12 @@ app.get('/callback', function (req, res) {
 	 });
 	res.on('end', function () {
 		console.log(result);
+		var queryStringForIDToken =querystring.parse(urlparse(req.url));
+		console.log(queryStringForIDToken);
+		var idToken = queryString.idtoken;
+ 		console.log(queryStringForIDToken);
+		console.log(jwt.decode(idToken));
+		
   	});
   	res.on('error', function (err) {
     		console.log(err);
