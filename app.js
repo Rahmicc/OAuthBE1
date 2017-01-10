@@ -16,9 +16,9 @@ app.get('/callback', function (req, res) {
   console.log(queryString);
   
   var responseCode=queryString.code;
-  console.log(code);
+  console.log(responseCode);
   console.log(queryString);
-  var data = querystring.stringify({code:qsFromReq.code,
+  var data = querystring.stringify({code:responseCode,
 		client_id:'920263213693-i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
 		client_secret:'eRoYBXEU6TlG1xc9EWtuaf9y',
 		redirect_uri:'https://peaceful-waters-40664.herokuapp.com/callback',
