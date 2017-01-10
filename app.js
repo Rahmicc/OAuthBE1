@@ -1,7 +1,14 @@
 var express = require("express"),
 app = express(),
 port = process.env.PORT || 1881,
-http = require("http"),
+https = require("https"),
+querystring = require('querystring');
+ 
+// form data
+var postData = querystring.stringify({
+  firstanme: "Amy",
+  lastname: "Li"
+});
 
 options = {
   hostname: 'www.googleapis.com',
@@ -19,12 +26,28 @@ app.get('/callback', function (req, res) {
   console.log('Google did sent a response');
   console.log (req);
   console.log('sending POST request...');
-  app.post('https://www.googleapis.com/oauth2/v4/token', function(req, res) {
-    var user_id = req.body.id;
-    var token = req.body.token;
-    var geo = req.body.geo;
-    res.send(user_id + ' ' + token + ' ' + geo);
-  });
+
+  var postReq= https.request(options, function(res){
+  	var result = '';
+	res.on('data', function (chunk) {
+		result += chunk;
+	 });
+	res.on('end', function () {
+		console.log(result);
+  	});
+  	res.on('error', function (err) {
+    		console.log(err);
+  	});
+   });
+
+   // req error
+   postReq.on('error', function (err) {
+   	console.log(err);
+   });
+ 
+  //send request witht the postData form
+  postReq.write(postData);
+  postReq.end();
   res.send('Hello World!')
 });
 
