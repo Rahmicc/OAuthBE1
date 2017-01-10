@@ -44,8 +44,11 @@ app.get('/callback', function (req, res) {
 	 });
 	res.on('end', function () {
 		console.log(result);
-		var idToken =result.id_token;
+		var jsonObject = JSON.parse(result);
+ 		console.log('JSON:');
+		console.log(jsonObject);
 
+		var idToken =jsonObject.id_token;
  		console.log(idToken);
 		console.log(jwt.decode(idToken));
 		
