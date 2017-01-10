@@ -1,7 +1,7 @@
-var postData = querystring.stringify({
-  firstanme: "Amy",
-  lastname: "Li"
-});
+var express = require('express'),
+https = require('https'),
+app = express(),
+port = 3000;
 
 options = {
   hostname: 'www.googleapis.com',
@@ -13,10 +13,10 @@ options = {
   },
   
   form: {'code':'4/P7q7W91a-oMsCeLvIaQm6bTrgtp7',
-'client_id':'920263213693-i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
+		'client_id':'920263213693-i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
 		'client_secret':'eRoYBXEU6TlG1xc9EWtuaf9y',
-		redirect_uri:'https://peaceful-waters-40664.herokuapp.com/callback',
-		grant_type:'authorization_code'}
+		'redirect_uri':'https://peaceful-waters-40664.herokuapp.com/callback',
+		'grant_type':'authorization_code'}
 };
 
 
@@ -45,7 +45,7 @@ app.get('/callback', function (req, res) {
    });
  
   //send request witht the postData form
-  postReq.write(postData);
+  postReq.write();
   postReq.end();
   res.send('Hello World!')
 });
