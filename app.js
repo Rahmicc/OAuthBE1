@@ -10,13 +10,10 @@ port = process.env.PORT || 3000;
 
 app.get('/callback', function (req, res) {
 
-  console.log('Google did sent a response:' + req.url);
-  console.log('query');
+  console.log('Google did sent a response:');
+
   var queryString  = url.parse(req.url, true).query;
-  console.log(queryString);
-  
   var responseCode=queryString.code;
-  console.log(responseCode);
   console.log(queryString);
   var data = querystring.stringify({code:responseCode,
 		client_id:'920263213693-i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
@@ -47,11 +44,10 @@ app.get('/callback', function (req, res) {
 	 });
 	res.on('end', function () {
 		console.log(result);
-//		var queryStringForIDToken =querystring.parse(urlparse(req.url));
-//		console.log(queryStringForIDToken);
-//		var idToken = queryString.idtoken;
- //		console.log(queryStringForIDToken);
-//		console.log(jwt.decode(idToken));
+		var idToken =url.parse(req.url, true).query.id_token;
+
+ 		console.log(idToken);
+		console.log(jwt.decode(idToken));
 		
   	});
   	res.on('error', function (err) {
