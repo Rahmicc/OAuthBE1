@@ -2,7 +2,7 @@ var express = require("express"),
 app = express(),
 port = process.env.PORT || 1881;  
  
-app.get('/', function (req, res) {
+app.get('/callback', function (req, res) {
   res.send('Hello World!')
 })
 
