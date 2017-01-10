@@ -4,7 +4,7 @@ querystring = require('querystring'),
 https = require('https'),
 app = express(),
 urlparse = require('url-parse'),
-jwt = require('jsonwebtoken'),
+//jwt = require('jsonwebtoken'),
 port = process.env.PORT || 3000;
 
 
@@ -44,11 +44,11 @@ app.get('/callback', function (req, res) {
 	 });
 	res.on('end', function () {
 		console.log(result);
-		var queryStringForIDToken =querystring.parse(urlparse(req.url));
-		console.log(queryStringForIDToken);
-		var idToken = queryString.idtoken;
- 		console.log(queryStringForIDToken);
-		console.log(jwt.decode(idToken));
+//		var queryStringForIDToken =querystring.parse(urlparse(req.url));
+//		console.log(queryStringForIDToken);
+//		var idToken = queryString.idtoken;
+ //		console.log(queryStringForIDToken);
+//		console.log(jwt.decode(idToken));
 		
   	});
   	res.on('error', function (err) {
