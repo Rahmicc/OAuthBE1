@@ -30,7 +30,7 @@ options = {
 app.get('/callback', function (req, res) {
 
   console.log('Google did sent a response');
-  var parsedCallbackReq = url-parse(req);
+  var parsedCallbackReq = urlparse(req.url);
   console.log(parsedCallbackReq.query);
 
   var qsFromReq = querystring.parse(parsedCallbackReq.query);
