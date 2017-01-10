@@ -4,7 +4,7 @@ querystring = require('querystring'),
 https = require('https'),
 app = express(),
 url= require('url'),
-//jwt = require('jsonwebtoken'),
+jwt = require('jsonwebtoken'),
 port = process.env.PORT || 3000;
 
 
@@ -44,7 +44,7 @@ app.get('/callback', function (req, res) {
 	 });
 	res.on('end', function () {
 		console.log(result);
-		var idToken =url.parse(req.url, true).query.id_token;
+		var idToken =result.id_token;
 
  		console.log(idToken);
 		console.log(jwt.decode(idToken));
