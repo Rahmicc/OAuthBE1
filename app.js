@@ -10,9 +10,11 @@ port = process.env.PORT || 3000;
 
 app.get('/callback', function (req, res) {
 
-  console.log('Google did sent a response' + req);
+  console.log('Google did sent a response:' + req.url);
+  console.log();
+  console.log(urlparse(req.url));
   var qsFromReq = querystring.parse(urlparse(req.url));
-  console.log(qsFromReq);
+ 
   var data = querystring.stringify({code:qsFromReq.code,
 		client_id:'920263213693-i234smkj1crhoquepvdmshin9k8qoptc.apps.googleusercontent.com',
 		client_secret:'eRoYBXEU6TlG1xc9EWtuaf9y',
