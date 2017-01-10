@@ -1,7 +1,7 @@
 var express = require('express'),
 https = require('https'),
 app = express(),
-port = 3000;
+port = process.env.PORT || 3000;
 
 options = {
   hostname: 'www.googleapis.com',
